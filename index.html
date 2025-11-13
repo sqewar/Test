@@ -1,9 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"content="width=device-width,initial-scale=1">
+<title>sqewar</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;color:#222;}
+
+.navbar{
+background-color:#222;overflow:hidden;display:flex;
+justify-content:flex-start;align-items:center;
+padding:0 10px;position:sticky;top:0;height:50px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+.navbar a{color:white;text-decoration:none;
+padding:14px 16px;display:block;}
+.navbar a:hover{background-color:#575757;}
+.navbar a.active{background-color:#04AA6D;}
+
+.content{padding:20px;}
+.hidden{display:none;}
+</style>
+</head>
+
 <body>
 
+<div class="navbar">
+<a href="#" id="homebutton" >HOME</a>
+<a id="calcbutton" href="#" >CALC</a>
+</div>
+
+<div class="content" id="homePage">
+<h1>Homee</h1>
+<p> Bla Bla Bla </p>
+<img src="cat-spinning.gif">
+</div>
+
+<div id="calcPage" class="content hidden">
 <h1>Calc</h1>
 <p>Btw calc stands for calculator.</p>
-<img src="https://yt3.googleusercontent.com/HWRjyzt56K6OcfsmXgX3cXfLaVG_EyiujeggEAL1APbhzCmaXDkITI4x10p1Ngvd7JRvX-cfaqw=s160-c-k-c0x00ffffff-no-rj">
+</div>
+
+<script>
+let homebutton=document.getElementById("homebutton"),
+calcbutton=document.getElementById("calcbutton"),
+homePage=document.getElementById("homePage"),
+calcPage=document.getElementById("calcPage");
+
+function showPage(p){
+ if(p==='home'){
+  homePage.classList.remove("hidden");
+  calcPage.classList.add("hidden");
+  homebutton.classList.add("active");
+  calcbutton.classList.remove("active");
+ } else {
+  calcPage.classList.remove("hidden");
+  homePage.classList.add("hidden");
+  calcbutton.classList.add("active");
+  homebutton.classList.remove("active");
+ }
+}
+homebutton.addEventListener("click",()=>{showPage("home");});
+calcbutton.addEventListener("click",()=>{showPage("calc");});
+showPage("home");
+</script>
+
 </body>
 </html>
